@@ -1,0 +1,48 @@
+<?php
+	
+	if(isset($_REQUEST['id']) )
+	{
+		$id=$_REQUEST['id'];
+		include("conn/conn.php");
+		include("conn/function2.php");
+	    $query="SELECT * FROM `user` where u_id=$id";
+		$res=mysqli_query($con,$query);
+	if(mysqli_num_rows($res) >0)
+	{
+		
+		$row=mysqli_fetch_assoc($res);
+	
+?>
+ 
+ 
+ 
+ <?php
+	}
+		
+		
+		
+		else if (!isset($_REQUEST['id']))
+		{
+			echo 'لم يتم استلام اي رقم';
+		}
+		mysqli_free_result($res);
+	mysqli_close($con);
+	}
+
+	 if(isset($_POST['submit']))
+	{
+		
+	     include("../conn/conn.php");
+		 include("../conn/function2.php");
+   
+    $id=$_POST['u_id'];
+	$name=$_POST['name'];
+	$user_email=$_POST['email'];
+	$user_password=$_POST['password'];
+	$user_type=$_POST['type'];
+    
+		 
+if(w-update("user","name='$name',email='$user_email',pass=PASSWORD('$user_password'),type='$user_statu'" ,"where u_id=$id",$con))
+{
+   ?>
+			<!-- <meta http-equiv="Refresh" content="0; URL=dashboard.php"/> -->

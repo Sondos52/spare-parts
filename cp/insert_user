@@ -1,0 +1,65 @@
+<?php 
+	if(! isset($_POST["submit"]))
+	{
+	?>
+    <div class="frame add-user-frame" style="display: none;">
+        <form method="post" class="edit-frame">
+            <input type="hidden" name="id">
+            <div class="name">
+                <label for="name">الاسم</label>
+                <input type="text" name="name" value="">
+            </div>
+            <div class="email">
+                <label for="email">الايميل</label>
+                <input type="email" name="email" value="">
+            </div>
+            <div class="password">
+                <label for="pass">كلمة السر </label>
+                <input type="password" name="pass">
+            </div>
+            <div class="type">
+                <label for="type">النوع</label>
+                <div class="check">
+                    <label for="type-check1">مدير</label>
+                    <input type="radio" name="type" value="1">
+                    <label for="type-check2">مستخدم</label>
+                    <input type="radio" name="type" value="0">
+                </div>
+            </div>
+           
+            <div class="btn-form">
+            <input type="submit" name="submit"  value="اضافة">
+                <button id="close-add-frame">الغاء</button>
+            </div>
+        </form>
+    </div>
+    <?php
+	}
+	else
+	{
+		
+	include("conn/conn.php");
+	 include("conn/function2.php");
+		
+
+	$user_name=$_POST['name'];
+	$user_email=$_POST['email'];
+	$user_password=$_POST['pass'];
+    $user_date=DATE("yyyy-MM-DD");
+	$type=$_POST['type'];
+	//$user_privilge=$_POST['priv'];
+	
+	
+if(	w_insert("user","  `name`,`email`, `pass`,`date`,`type`","'$user_name','$user_email', PASSWORD('$user_password'),' $user_date','$type'",$con));
+
+{
+    ?>
+     <meta http-equiv="Refresh" content="0; URL=dashboard.php"/> 
+    <?php
+}
+
+	}
+	
+	
+	?>
+   
