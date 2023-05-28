@@ -2,7 +2,7 @@
 	// session_start();
 	// if(!isset($_SESSION['user']))
 	// header('location:../login.php');
-	
+
 	?>
 
 
@@ -16,7 +16,6 @@
 </head>
 
 <body>
-
 <?php
     // include('conn/function2.php');
     // include('model/product_model.php');
