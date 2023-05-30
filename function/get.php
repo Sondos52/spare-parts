@@ -26,3 +26,6 @@ function getOne(string $table_name, $id)
     }
     return $r;
 }
+function hello(){
+    return 'hello World';
+}
